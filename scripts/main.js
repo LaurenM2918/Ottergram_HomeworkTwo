@@ -63,7 +63,7 @@ function showDetails() {
 
 function addKeyPressHandler() {
   'use strict';
-  document.body.addEventListener('keyup', function(event) {
+  document.body.addEventListener('keyup', function (event) {
     event.preventDefault();
     console.log(event.keyCode);
     if (event.keyCode === ESC_KEY) {
@@ -81,39 +81,38 @@ function initializeEvents() {
 
 initializeEvents();
 
-function getCurrentIndex(thumb){
+function getCurrentIndex(thumb) {
   var thumbArr = getThumbnailsArray();
-  for (let i=0; i<thumbArr.length; i++){
-     if (thumbArr[i].getAttribute('data-image-url') === 
-      thumb.getAttribute('data-image-url') ){
-          return i;
-     }
+  for (let i = 0; i < thumbArr.length; i++) {
+    if (thumbArr[i].getAttribute('data-image-url') ===
+      thumb.getAttribute('data-image-url')) {
+      return i;
+    }
   }
 
   return -1;
 }
 
-let currentIndex =0;
-document.getElementById("previous").addEventListener("click", function(event) {
+let currentIndex = 0;
+document.getElementById("previous").addEventListener("click", function (event) {
   event.preventDefault();
   var thumbnails = getThumbnailsArray();
   var length = thumbnails.length;
-  if(currentIndex === 0){
-    currentIndex = thumbnails.length -1;
-  }else{
+  if (currentIndex === 0) {
+    currentIndex = thumbnails.length - 1;
+  } else {
     currentIndex -= 1;
   }
-  setDetails(imageFromThumb(thumbnails[currentIndex]), 
-        titleFromThumb(thumbnails[currentIndex]));
+  setDetails(imageFromThumb(thumbnails[currentIndex]),
+    titleFromThumb(thumbnails[currentIndex]));
 });
 
-document.getElementById("next").addEventListener("click", function(event) {
+document.getElementById("next").addEventListener("click", function (event) {
   event.preventDefault();
   var thumbnails = getThumbnailsArray();
   var length = thumbnails.length;
   currentIndex += 1;
   currentIndex %= length;
-  setDetails(imageFromThumb(thumbnails[currentIndex]), 
-        titleFromThumb(thumbnails[currentIndex]));
+  setDetails(imageFromThumb(thumbnails[currentIndex]),
+    titleFromThumb(thumbnails[currentIndex]));
 });
-
